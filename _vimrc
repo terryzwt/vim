@@ -52,11 +52,18 @@ set incsearch
 set gdefault
 
 "NERDTree插件功能配置
-map <f3> :NERDTreeToggle<CR> "F2快捷键打开关闭NERDTree功能
+map <f2> :NERDTreeToggle<CR> "F2快捷键打开关闭NERDTree功能
 
 "NERDTree Settings{
 	let NERDTreeWinPos ="left" "将NERDTree的窗口设置在gvim窗口的左边
-	"let NERDTreeShowBookmarks=1 "当打开NERDTree窗口时，自动显示Bookmarks
-	"let NERDTreeBookmarksFile=$VIM."\\.NERDTreeBookmarks" "设置书签文件为VIM根目录
+	let NERDTreeShowBookmarks=1 "当打开NERDTree窗口时，自动显示Bookmarks
+	let NERDTreeBookmarksFile=$VIM."\\.NERDTreeBookmarks" "设置书签文件为VIM根目录
 "}
+
+"Taglist配置
+map <F3> :Tlist<CR>
+let Tlist_Ctags_Cmd = $VIM."\\ctags58\\ctags"
+let Tlist_Show_One_File = 1      "不同时显示多个文件的tag，只显示当前文件的
+let Tlist_Exit_OnlyWindow = 1    "如果taglist窗口是最后一个窗口，则退出vim
+let Tlist_Use_Right_Window = 1   "在右侧窗口中显示taglist窗口
 

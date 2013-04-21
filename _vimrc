@@ -50,3 +50,13 @@ set hlsearch
 set incsearch
 "行内替换
 set gdefault
+
+"NERDTree插件功能配置
+map <f3> :NERDTreeToggle<CR> "F2快捷键打开关闭NERDTree功能
+
+"NERDTree Settings{
+	let NERDTreeWinPos ="left" "将NERDTree的窗口设置在gvim窗口的左边
+	"let NERDTreeShowBookmarks=1 "当打开NERDTree窗口时，自动显示Bookmarks
+	"let NERDTreeBookmarksFile=$VIM."\\.NERDTreeBookmarks" "设置书签文件为VIM根目录
+"}
+

@@ -28,3 +28,25 @@ function MyDiff()
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
+"配色方案及字体设置
+set guifont=Courier_New:h12:cANSI
+colorscheme freya 
+"显示行号
+set nu
+" Tab键的宽度
+set tabstop=2
+" 统一缩进为2
+set softtabstop=2
+set shiftwidth=2
+
+"禁止生成临时文件
+set nobackup
+set noswapfile
+
+"搜索忽略大小写
+set ignorecase
+"搜索逐字符高亮
+set hlsearch
+set incsearch
+"行内替换
+set gdefault

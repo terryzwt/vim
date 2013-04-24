@@ -67,3 +67,49 @@ let Tlist_Show_One_File = 1      "不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Exit_OnlyWindow = 1    "如果taglist窗口是最后一个窗口，则退出vim
 let Tlist_Use_Right_Window = 1   "在右侧窗口中显示taglist窗口
 
+set autoread
+"对.vimrc配置文件的修改立即生效
+autocmd! bufwritepost _vimrc source %
+
+" 退出插入模式时，自动写入文件
+autocmd InsertLeave * write
+
+
+" 自动补全
+filetype plugin indent on
+set completeopt=longest,menu
+
+" 自动补全文件
+set dictionary-=$VIM/txt/php_funclist.txt dictionary+=$VIM/txt/php_funclist.txt
+
+"用Ctrl+PageUp/PageDown切换标签页
+map <S-Left> :tabp<CR>
+map <S-Right> :tabn<CR>
+"按F8、F9切换标签页
+nnoremap <silent> <F8> :tabp<CR>
+nnoremap <silent> <F9> :tabn<CR>
+"按F12关闭当前标签
+nnoremap <silent> <F12> :tabc<CR>
+"Alt+n 切换标签页
+function! BufPos_ActivateBuffer(num)
+    let l:count = 1
+    for i in range(1, bufnr("$"))
+        if buflisted(i) && getbufvar(i, "&modifiable")
+            if l:count == a:num
+                exe "buffer " . i
+                return
+            endif
+            let l:count = l:count + 1
+        endif
+    endfor
+    echo "No buffer!"
+endfunction
+ 
+function! BufPos_Initialize()
+    for i in range(1, 9)
+        exe "map <M-" . i . "> :call BufPos_ActivateBuffer(" . i . ")<CR>"
+    endfor
+    exe "map <M-0> :call BufPos_ActivateBuffer(10)<CR>"
+endfunction
+autocmd VimEnter * call BufPos_Initialize()
+

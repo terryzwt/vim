@@ -77,7 +77,7 @@ autocmd InsertLeave * write
 
 " 自动补全
 filetype plugin indent on
-set completeopt=longest,menu
+"set completeopt=longest,menu
 
 " 自动补全文件
 set dictionary-=$VIM/txt/php_funclist.txt dictionary+=$VIM/txt/php_funclist.txt
@@ -112,4 +112,10 @@ function! BufPos_Initialize()
     exe "map <M-0> :call BufPos_ActivateBuffer(10)<CR>"
 endfunction
 autocmd VimEnter * call BufPos_Initialize()
+
+"设置语言编码
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+"set encoding=utf-8
+"set termencoding=cp936
+"language messages zh_CN.UTF-8
 
